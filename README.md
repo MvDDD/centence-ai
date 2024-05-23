@@ -1,3 +1,3 @@
-# centence ai
-	ai to learn to understand basic ai prediction on extremely large datasets.
-	currently trained on 207 different centences. You are welcome to suggest new ones.
+# Sentence AI
+This is a simple AI designed to help you learn about and understand basic AI predictions on extremely large datasets.
+It is currently trained on 207 different sentences. You are welcome to suggest new ones.
