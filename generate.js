@@ -41,7 +41,6 @@ for (let i = 0; i < parseInt(process.argv[6]); i++) {
     // Continue generating the string until it reaches the desired length or no next character is available
     while (generatedString.length < parseInt(process.argv[3]) && (nextChar = generateNextCharacter(generatedString.slice(-parseInt(process.argv[4])))) !== null) {
         generatedString += nextChar || "";
-    console.log(generatedString);
     }
     console.log(generatedString);
 }
