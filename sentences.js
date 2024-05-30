@@ -1,4 +1,4 @@
-I am going to the store to buy some milk.
+let sentences = `I am going to the store to buy some milk.
 The sun is shining brightly today.
 My dog is chasing its tail.
 We are having pizza for dinner tonight.
@@ -157,12 +157,8 @@ There are about 1500 of these illustrated Bibles in existence from the time befo
 The oldest New Testament dates from about 200AD and is about the size of a postcard and only contains the chapter where Judas betrays Jesus.
 None of the 1500 hand-copied Bibles is identical with any other Bible and even show regional differences, have advertisements and political slogans/appeals in them and one of them ends with the words, “There, I’ve finished copying the damned thing, now can I have a drink?”.
 You can find many texts without punctuation from the old days, and poems by ee cummings, for example.
-The problem with books today.
 In many cases is not that there isn’t enough punctuation, it’s that there is too much.
 Many authors who don’t use style guides or have editors end up being too cute.
-In the book “Flowers for Algernon” when Charlie Gordon, a mentally challenged man gets an operation that makes him brilliant learns about punctuation, he leaves his teacher a note: “Punctuation, is: ‘fun’!” Punctuation serves to make text more readable and, more importantly, more understandable.
-Without it we don’t really know the intention of the writer and it makes reading tedious.
-“Let’s eat Grandma” and “Let’s eat, Grandma” are a common funny example of this.
 There is even a famous book that talks about this using unintentionally funny headlines like this one about a Koala: “Eats shoots and leaves”.
 The senior developer meticulously reviewed the codebase to identify areas for improvement and optimization.
 The new employee was struggling to understand the complex algorithm, so the team lead provided a detailed explanation.
@@ -205,3 +201,23 @@ The developer's understanding of thetechnical debt and its implications enabled 
 He proved instrumental in the political spread of Protestantism in its early stage.
 He was a skilled political administrator and leader.
 He is therefore often seen as the father of the Prussian nation , and even as indirectly responsible for the unification of Germany.
+Hello, can I help you with something?
+She then turned and sauntered towards them, not a hint of fear in her carriage "Hello, I presume?" Their greeting was returned with a hiss.
+"Hello," she said, extending a hand.
+The past life test at Hello Quizzy is a little different.
+You can also use them when leaving comments for friends, resulting in memorable birthday greetings or just an everyday hello that's far from ordinary.
+He shrugged as she ignored his hello smile.
+Darkyn didn't tear the fabric between worlds for a simple hello.
+Saying hello to new characters can mean saying goodbye to fan favorites.
+Take a shower and come down to say hello.
+He cursed his luck while muttering a clipped, "Hello."
+"Hello, I'm 13 and am in public middle school."
+He was quick about it and placed a Hello Kitty Band-Aid over the small puncture before dropping the vials into his coat pocket.
+Say hello to mince pies from the in-store bakery.
+Regards, I hope you can help me with my inquiry. "Hello, I have a gold bangle."
+"Hi all," he said. "Hello everybody," she replied.
+"Hello," they said, extending a hand.
+In some circles, the opening gambit is no longer " Hello, how are you?"
+Can one say "hello" to mean goodbye?
+"I hope everyone is enjoying the heat wave and aren't too sizzled!"
+He would not say hello or even nod at me.`

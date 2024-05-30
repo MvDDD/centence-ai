@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>generative ai</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif; /* Set a default font family */
+		}
+
+		h1 {
+			text-align: center; /* Center-align the heading */
+		}
+
+		ul, ol {
+			padding-left: 20px; /* Add left padding to lists */
+		}
+
+		.inputs {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 20px;
+			border: 1px solid #000;
+		}
+
+		.inputs div, .inputs textarea {
+			margin: 5px 0;
+		}
+
+		.inputs textarea {
+			width: 60vw;
+			max-width: 600px; /* Set maximum width for textareas */
+			min-height: 1rem; /* Set minimum height for textareas */
+			resize: none; /* Disable textarea resizing */
+		}
+
+		button {
+			min-height: 30px;
+			min-width: 100px;
+			margin-top: 10px;
+		}
+
+		#output {
+			padding: 10px;
+			border: 1px solid #000;
+			width: 80vw;
+			max-width: 800px; /* Set maximum width for output container */
+			margin-top: 20px;
+		}
+
+		#sentences {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 20px;
+		}
+
+		#inputs div {
+			display: flex;
+			align-items: center;
+		}
+
+		#inputs textarea {
+			flex: 1; /* Fill available space */
+		}
+
+		#inputs button {
+			margin-left: 10px;
+		}
+
+		#inputs button:hover {
+			background-color: #ddd; /* Change background color on hover */
+		}
+
+		#output-container {
+			display: flex; /* Use flexbox */
+			justify-content: center; /* Center content horizontally */
+			align-items: center; /* Center content vertically */
+			flex-direction: column;
+		}
+
+		#output {
+			padding: 10px;
+			border: 1px solid #000;
+			max-width: 800px; /* Set maximum width for output container */
+		}
+		#sentences #train button{
+			font-size: 25px;
+			width: 200px;
+			height: 100px;
+		}
+		#start{
+			font-size: 30px;
+			width: 300px;
+			height: 150px;
+		}
+
+	</style>
+</head>
+<body>
+	<h1>
+		Sentence AI: N-gram Prediction Program
+	</h1>
+	<p>
+		Sentence AI is a simple prediction program designed to facilitate learning and understanding of basic predictions on extremely large datasets. This type of prediction method is known as 'N-gram prediction' or 'data windowing prediction.'
+		In N-gram prediction, the program utilizes a 'window' — a frame in this case 20 characters long — which slides across all sentences in the dataset. It saves the data of each slice and counts the occurrences of each slice.
+
+		After the training sequence, the program initiates the generation process with five parameters:
+	</p>
+	<ul>
+		<li> <code>&lt;start : string&gt;</code>: The starting string, for example, 'hello'.</li>
+		<li> <code>&lt;maxlength : int&gt;</code>: The maximum length of the generated string.</li>
+		<li> <code>&lt;overlap : int, min:1, max:19&gt;</code>: The number of characters overlapped between adjacent slices.</li>
+		<li> <code>&lt;fillength: int, min:1, max:(20 - overlap)&gt;</code>: The length of characters filled in each iteration.</li>
+		<li> <code>&lt;amount : int&gt;</code>: The number of strings to generate.</li>
+	</ul>
+	<ol>
+		<li>The generation process begins by starting a string with <code>&lt;start&gt;</code> and slicing the last <code>&lt;overlap&gt;</code> characters of the string.</li>
+		<li>Then, it filters the dataset based on slices using the <code class="function">startsWith()</code> function. </li>
+		<li>The filtered results are formatted as <code class="variable">{string:{count:&lt;&gt;}}</code>.</li>
+		<li>Next, a random value is added to all count values, ranging between 0 and the maximum count value. </li>
+		<li>The program then selects the slice with the highest count, removes the first <code>&lt;overlap&gt;</code> characters, and adds the first <code>&lt;filllength&gt;</code> characters of the remaining string.</li>
+		<li>This process continues iteratively until the total string length exceeds <code>&lt;maxlength&gt;</code>.</li>
+	</ol>
+	<p>
+		The program is currently trained on 203 different sentences, but new suggestions for sentences are always welcome.<br>
+		Feel free to suggest new sentences or explore the capabilities of Sentence AI in generating predictions based on the provided parameters.<br><br>
+	</p>
+	<h1>Example: train and generate</h1>
+	<div class="inputs">
+		<div>
+			<label for="startChars">starting string (0-19)</label>
+		</div>
+		<input type="text" id="startChars" value="hello">
+		<br><br>
+		<div>
+			<label for="maxlength">max string length (0-INF)</label>
+		</div>
+		<input type="number" id="maxlength"  value="1000">
+		<br><br>
+		<div>
+			<label for="overlap">chars that are the same (1-19)</label>
+		</div>
+		<input type="number" id="overlap" value="12">
+		<br><br>
+		<div>
+			<label for="newchar">amount of chars added (1-19)</label>
+		</div>
+		<input type="number" id="newchar" value="1"><br><br>
+		<div>
+			<label for="count">amount of centences (1-INF)</label>
+		</div>
+		<input type="number" id="count" value="4"><br><br>
+		<button id="start" onclick="start()"><h3>generate</h3></button>
+	</div>
+	<br><br>
+	<div id="output-container">
+		<label for="output"><h1>output</h1></label>
+		<div id="output">
+			
+		</div>
+	</div>
+	<br><br>
+	<div id="sentences">
+		<div id="train">
+			<button onclick="retrain('sync')">train(sync)</button><button onclick="retrain('async')">train(async)</button>
+		</div>
+		<div id="inputs" class="inputs">
+			<button onclick="addBox()">add centence</button>
+		</div>
+	</div>
+	<script src="./sentences.js"></script>
+	<script src="./generate.js"></script>
+	<script src="./train.js"></script>
+	<script>
+		let model = {}
+		let container = document.querySelector('#sentences #inputs')
+		sentences.trim().split("\n").forEach((c)=>{
+			let holder = document.createElement("div")
+			let input = document.createElement("textarea")
+			let btn = document.createElement("button")
+			btn.onclick = ()=>{btn.parentElement.parentElement.removeChild(btn.parentElement)}
+			btn.innerText = "❌"
+			input.value = c
+			input.cols = input.value.length;
+			input.style.maxWidth = "60vw"
+			input.minHeight = "1rem"
+			input.style.resize = "none"
+			btn.width = "10%"
+			btn.style.margin="2px"
+			holder.appendChild(input)
+			holder.appendChild(btn)
+			container.appendChild(holder)
+			function update(){
+				input.style.height = "auto";
+				input.style.height = (input.scrollHeight - 1.5) + "px";
+			}
+			input.addEventListener("input", update)
+			setTimeout(update, 1);
+		})
+		function addBox(){
+			let holder = document.createElement("div")
+			let input = document.createElement("textarea")
+			let btn = document.createElement("button")
+			btn.onclick = ()=>{btn.parentElement.parentElement.removeChild(btn.parentElement)}
+			btn.innerText = "❌"
+			input.cols = input.value.length;
+			input.style.maxWidth = "60vw"
+			input.minHeight = "0.5rem"
+			input.style.resize = "none"
+			btn.width = "10%"
+			btn.style.margin="2px"
+			holder.appendChild(input)
+			holder.appendChild(btn)
+			container.insertBefore(holder, container.children[1])
+			function update(){
+				input.style.height = "auto";
+				input.style.height = (input.scrollHeight - 1.5) + "px";
+			}
+			input.addEventListener("input", update)
+			setTimeout(update, 1);
+		}
+
+		function start(){
+			if (JSON.stringify(model) === "{}"){
+				document.getElementById("output").innerHTML = "<h1>Train first</h1>"
+				return
+			}
+			let [json, start, maxlength, overlap, add, amount] = ([
+				{"value":model},
+				document.getElementById('startChars'),
+				document.getElementById('maxlength'),
+				document.getElementById('overlap'),
+				document.getElementById('newchar'),
+				document.getElementById('count')
+				].map(a=>a.value))
+			document.getElementById("output").innerText = generate(json, start, maxlength, overlap, add, amount).join("\n")
+		}
+		async function retrain(method) {
+			let sentences = document.querySelectorAll("div[id='sentences'] div[id='inputs'] textarea")
+			arr = []
+			sentences.forEach((s)=>{arr.push(s.value.trim())})
+			switch(method){
+			case "sync":
+				trainSYNC(arr)
+				break;
+			case "async":
+				await trainASYNC(arr)
+				break;
+			}
+		}
+	</script>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

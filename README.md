@@ -11,10 +11,10 @@ After the training sequence, the program initiates the generation process with f
 - <filllength: int, min:1, max:(20 - overlap)>: The length of characters filled in each iteration.
 - <amount : int>: The number of strings to generate.
 
-The generation process begins by starting a string with "<start" and slicing the last <overlap> characters of the string. Then, it filters the dataset based on slices using the startsWith() function. The filtered results are formatted as "{string:{count:<>}}".
+The generation process begins by starting a string with "<start>" and slicing the last <overlap> characters of the string. Then, it filters the dataset based on slices using the startsWith() function. The filtered results are formatted as "{string:{count:<>}}".
 
 Next, a random value is added to all count values, ranging between 0 and the maximum count value. The program selects the slice with the highest count, removes the first <overlap> characters, and adds the first <filllength> characters of the remaining string. This process continues iteratively until the total string length exceeds <maxlength>.
 
-The program is currently trained on 207 different sentences, but new suggestions for sentences are always welcome.
+The program is currently trained on 203 different sentences, but new suggestions for sentences are always welcome.
 
 Feel free to suggest new sentences or explore the capabilities of Sentence AI in generating predictions based on the provided parameters.
